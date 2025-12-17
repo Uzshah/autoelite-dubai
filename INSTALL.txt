@@ -1,0 +1,126 @@
+========================================
+AutoElite Dubai Website - Installation
+========================================
+
+QUICK START - Copy this entire folder to your laptop and follow below:
+
+=== OPTION 1: Python (Recommended - Works on all platforms) ===
+
+1. Open Terminal/Command Prompt
+2. Navigate to this folder:
+   cd path/to/static-site
+
+3. Run the server:
+   # Mac/Linux:
+   python3 -m http.server 8080
+
+   # Windows (try both):
+   python -m http.server 8080
+   py -m http.server 8080
+
+4. Open browser:
+   http://localhost:8080
+
+
+=== OPTION 2: Using Node.js ===
+
+1. Install http-server globally (one time only):
+   npm install -g http-server
+
+2. Navigate to this folder:
+   cd path/to/static-site
+
+3. Start server:
+   http-server -p 8080
+
+4. Open browser:
+   http://localhost:8080
+
+
+=== OPTION 3: Using PHP ===
+
+1. Navigate to this folder:
+   cd path/to/static-site
+
+2. Start server:
+   php -S localhost:8080
+
+3. Open browser:
+   http://localhost:8080
+
+
+=== OPTION 4: Using VS Code Live Server ===
+
+1. Open VS Code
+2. Install "Live Server" extension
+3. Open this folder in VS Code
+4. Right-click index.html → "Open with Live Server"
+
+
+=== OPTION 5: Double-click (No server needed, but limited features) ===
+
+Simply double-click index.html file
+Note: Some features may not work without a proper server
+
+
+=== TROUBLESHOOTING ===
+
+Problem: "python3: command not found"
+Solution: Try "python" instead of "python3"
+
+Problem: "Port 8080 already in use"
+Solution: Use a different port:
+  python3 -m http.server 8000
+
+Problem: Styles not loading
+Solution: Make sure you're running the server from the static-site folder
+
+
+=== ACCESS FROM OTHER DEVICES ===
+
+1. Find your laptop's IP address:
+   # Mac/Linux:
+   ifconfig | grep "inet "
+
+   # Windows:
+   ipconfig
+
+2. Start server with network binding:
+   python3 -m http.server 8080 --bind 0.0.0.0
+
+3. Access from phone/tablet:
+   http://YOUR_IP_ADDRESS:8080
+   Example: http://192.168.1.100:8080
+
+
+=== FILE STRUCTURE ===
+
+static-site/
+├── index.html          # Main website file
+├── css/
+│   └── styles.css      # All styling
+├── js/
+│   └── script.js       # JavaScript functionality
+├── images/             # Place your images here
+└── robots.txt          # SEO configuration
+
+
+=== CUSTOMIZATION ===
+
+1. Change colors: Edit css/styles.css (lines 2-11)
+2. Update content: Edit index.html
+3. Add images: Put in images/ folder
+4. Phone number: Search "+971 4 XXX XXXX" and replace
+
+
+=== DEPLOYMENT ===
+
+Upload all files to any web hosting:
+- Netlify (Free, recommended)
+- Vercel (Free)
+- GitHub Pages (Free)
+- Your own hosting via FTP
+
+For questions: service@autoelitedubai.ae
+
+========================================
