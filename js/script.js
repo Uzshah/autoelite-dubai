@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Contact Form Submission
+  // Contact Form Submission with Web3Forms
   const form = document.getElementById('contactForm');
   const formMessage = document.getElementById('formMessage');
 
@@ -34,51 +34,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Get form data
       const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        service: formData.get('service'),
-        message: formData.get('message')
-      };
 
       // Show loading message
       formMessage.textContent = 'Sending message...';
       formMessage.className = 'form-message';
       formMessage.style.display = 'block';
 
-      // Simulate form submission (replace with actual backend call)
-      setTimeout(() => {
-        // Success message
-        formMessage.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
-        formMessage.className = 'form-message success';
+      try {
+        // Submit to Web3Forms API
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
 
-        // Reset form
-        form.reset();
+        const result = await response.json();
 
-        // Hide message after 5 seconds
-        setTimeout(() => {
-          formMessage.style.display = 'none';
-        }, 5000);
+        if (result.success) {
+          // Success message
+          formMessage.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
+          formMessage.className = 'form-message success';
 
-        // In production, you would send data to your backend:
-        // fetch('/api/contact', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify(data)
-        // })
-        // .then(response => response.json())
-        // .then(result => {
-        //   formMessage.textContent = 'Thank you! Your message has been sent successfully.';
-        //   formMessage.className = 'form-message success';
-        //   form.reset();
-        // })
-        // .catch(error => {
-        //   formMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
-        //   formMessage.className = 'form-message error';
-        // });
+          // Reset form
+          form.reset();
 
-      }, 1000);
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            formMessage.style.display = 'none';
+          }, 5000);
+        } else {
+          // Error message
+          formMessage.textContent = 'Sorry, there was an error sending your message. Please try again.';
+          formMessage.className = 'form-message error';
+        }
+      } catch (error) {
+        // Network error
+        formMessage.textContent = 'Sorry, there was an error sending your message. Please check your internet connection and try again.';
+        formMessage.className = 'form-message error';
+      }
     });
   }
 

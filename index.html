@@ -605,7 +605,12 @@
 
           <div class="contact-form-wrapper">
             <h3>Send Us a Message</h3>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+              <!-- Web3Forms Access Key -->
+              <input type="hidden" name="access_key" value="6da50bfe-de95-49b8-8e94-4a8da4696eb8">
+              <input type="hidden" name="subject" value="New Contact Form Submission from AutoElite Dubai">
+              <input type="hidden" name="redirect" value="https://uzshah.github.io/autoelite-dubai/?success=true">
+
               <div class="form-group">
                 <label for="name">Full Name *</label>
                 <input type="text" id="name" name="name" required placeholder="John Doe">
